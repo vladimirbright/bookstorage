@@ -4,7 +4,7 @@ from django.db import models
 
 from helpers import validators as add_valid
 
-# Create your models here.
+
 class Author(models.Model):
     first_name = models.CharField(u"Имя", max_length=50)
     second_name = models.CharField(u"Отчество(second name)",
