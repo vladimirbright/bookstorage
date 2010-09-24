@@ -1,0 +1,4 @@
+Django>=1.2.3
+PIL>=1.1.7
+South>=0.7.2
+psycopg2>=2.2.2
