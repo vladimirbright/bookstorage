@@ -62,6 +62,8 @@ TEMPLATE_DIRS = (
     self_dir('templates'),
 )
 
+SOUTH_TESTS_MIGRATE = False
+
 INSTALLED_APPS = (
     'authors',
     'books',
@@ -72,8 +74,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'south',
     'easy_thumbnails',
+    'helpers',
+    'south',
 )
 
 
