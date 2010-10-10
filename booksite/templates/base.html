@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+{% load webdesign %}
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block head-title %}Книгохран{% endblock %}</title>
+    {% block head-blueprint %}
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    {% endblock %}
+    {% block head-css %}
+    <link rel="stylesheet" href="{{MEDIA_URL}}css/main.css?{% now "H:i:s"  %}" type="text/css">
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      {% block container %}
+      <h2>Личная библиотека</h2>
+      <hr>
+
+      <p>Если вы читаете, вы зашли по адресу.</p>
+
+        <div class="span-4">
+            <h3>Куда податься</h3>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Авторы</a></li>
+                <li><a href="#">Книги</a></li>
+                <li><a href="#">Жанры</a></li>
+                <li><a href="#">Личный уголок</a></li>
+            </ul>
+        </div>
+        <div class="span-20 last">
+            {% lorem %}
+        </div>
+        
+
+      {% endblock %}
+    </div>
+  </body>
+</html>

@@ -7,8 +7,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^booksite/', include('booksite.foo.urls')),
+    url( r'^$', 'django.views.generic.simple.direct_to_template',
+                                                { 'template': 'index.html'}),
 
     (r'^admin/', include(admin.site.urls)),
 )

@@ -74,6 +74,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.webdesign',
     'easy_thumbnails',
     'helpers',
     'south',

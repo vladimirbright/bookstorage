@@ -9,3 +9,7 @@ class BookAdmin(admin.ModelAdmin):
     search_fields = ( 'title', )
 admin.site.register(Book, BookAdmin)
 
+
+class BookFileAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(BookFile, BookFileAdmin)
