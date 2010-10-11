@@ -5,6 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block head-title %}Книгохран{% endblock %}</title>
+    <link rel="shortcut icon" href="{{MEDIA_URL}}i/favicon.ico" />
     {% block head-blueprint %}
     <!-- Framework CSS -->
     <link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/screen.css" type="text/css" media="screen, projection">
@@ -18,25 +19,42 @@
   <body>
     <div class="container">
       {% block container %}
+      <h2 id="noscript">Для работы сайта нужен javascript. Включи уже!!!</h2>
+      <script type="text/javascript">document.getElementById('noscript').style.display = 'none';</script>
       <h2>Личная библиотека</h2>
       <hr>
 
-      <p>Если вы читаете, вы зашли по адресу.</p>
+      <p>Читаете? Вы зашли по адресу.</p>
 
         <div class="span-4">
+            {% block n %}
             <h3>Куда податься</h3>
-            <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Авторы</a></li>
-                <li><a href="#">Книги</a></li>
-                <li><a href="#">Жанры</a></li>
-                <li><a href="#">Личный уголок</a></li>
-            </ul>
+            <h4><a href="#">Главная</a></h4>
+            <h4><a href="#">Авторы</a></h4>
+            <h4><a href="#">Книги</a></h4>
+            <h4><a href="#">Жанры</a></h4>
+            <h4><a href="#">Читальный зал</a></h4>
+            <h4><a href="#">Абонемент</a></h4>
+            {% endblock %}
         </div>
         <div class="span-20 last">
-            {% lorem %}
+            <div class="span-20 last">
+                {% block p %}
+                    <h3>Алфавитный указатель</h3>
+                    {% lorem 1 p %}
+                    <h4>Пагинация</h4>
+                    <hr/>
+                {% endblock %}
+            </div>
+            <div class="span-20 last">
+                {% block c %}
+                    {% lorem 8 p %}
+                {% endblock %}
+            </div>
         </div>
         
+      <hr>
+      <h3>Трололо &copy;</h3>
 
       {% endblock %}
     </div>
