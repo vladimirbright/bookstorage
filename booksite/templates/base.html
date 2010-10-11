@@ -29,18 +29,24 @@
         <div class="span-4">
             {% block n %}
             <h3>Куда податься</h3>
-            <h4><a href="#">Главная</a></h4>
-            <h4><a href="#">Авторы</a></h4>
-            <h4><a href="#">Книги</a></h4>
-            <h4><a href="#">Жанры</a></h4>
-            <h4><a href="#">Читальный зал</a></h4>
-            <h4><a href="#">Абонемент</a></h4>
+            <h4>{% block n-i %}
+                <a href="{% url index %}">Главная</a>{% endblock %}</h4>
+            <h4>{% block n-a %}
+                <a href="{% url authors %}">Авторы</a>{% endblock %}</h4>
+            <h4>{% block n-b %}
+                <a href="{% url books %}">Книги</a>{% endblock %}</h4>
+            <h4>{% block n-g %}
+                <a href="{% url genres %}">Жанры</a>{% endblock %}</h4>
+            <h4>{% block n-r %}
+                <a href="{% url reading %}">Читальный зал</a>{% endblock %}</h4>
+            <h4>{% block n-m %}
+                <a href="{% url my %}">Абонемент</a>{% endblock %}</h4>
             {% endblock %}
         </div>
         <div class="span-20 last">
             <div class="span-20 last">
                 {% block p %}
-                    <h3>Алфавитный указатель</h3>
+                    <h3>{% block p-current %}Алфавитный указатель{% endblock %}</h3>
                     {% lorem 1 p %}
                     <h4>Пагинация</h4>
                     <hr/>
