@@ -28,7 +28,7 @@ DATABASES = {
 }
 
 TIME_ZONE = 'Europe/Moscow'
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'ru'
 
 SITE_ID = 1
 
@@ -60,6 +60,10 @@ ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     self_dir('templates'),
+)
+
+LOCALE_DIRS = (
+    self_dir('locale'),
 )
 
 SOUTH_TESTS_MIGRATE = False
