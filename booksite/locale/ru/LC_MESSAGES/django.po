@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 21:33+0400\n"
+"POT-Creation-Date: 2010-10-17 23:52+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,3 +77,31 @@ msgstr "Автор"
 #: authors/models.py:67
 msgid "Authors"
 msgstr "Авторы"
+
+#: helpers/validators.py:17
+msgid "Only in future"
+msgstr "Только в будущем"
+
+#: helpers/validators.py:23
+msgid "Only in past"
+msgstr "Только в прошлом"
+
+#: helpers/validators.py:28
+#, python-format
+msgid "Too old. Maximum %(years)d years old."
+msgstr "Слишком старый. Максимум %(years)d лет."
+
+#: helpers/validators.py:42
+#, python-format
+msgid "Very young. At least %(years)d years old."
+msgstr "Слишком молодой. Как минимум %(years)d лет."
+
+#: helpers/validators.py:57
+#, python-format
+msgid "Maximum file size is %(size)s"
+msgstr "Максимальный размер файла %(size)s"
+
+#: helpers/validators.py:70
+#, python-format
+msgid "Minimum file size is %(size)s"
+msgstr "Минимальный размер файла %(size)s"

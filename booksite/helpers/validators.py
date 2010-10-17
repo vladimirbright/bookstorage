@@ -7,24 +7,25 @@ from datetime import datetime, date, timedelta
 
 from django.core.exceptions import ValidationError
 from django.template.defaultfilters import filesizeformat
+from django.utils.translation import ugettext_lazy as _
 
 
 # Временные валидаторы
 def in_future(value):
     if (isinstance(value, date) and value < date.today()) or \
        (isinstance(value, datetime) and value < datetime.now()):
-        raise ValidationError(u"Только в будущем")
+        raise ValidationError(_("Only in future"))
 
 
 def in_past(value):
     if (isinstance(value, date) and value > date.today()) or \
        (isinstance(value, datetime) and value > datetime.now()):
-        raise ValidationError(u"Только в прошлом")
+        raise ValidationError(_("Only in past"))
 
 
 # Возрастные валидаторы
 class YoungerThen(object):
-    message = u"Слишком старый. Максимум %d лет"
+    message = _("Too old. Maximum %(years)d years old.")
     max_age = None
 
     def __init__(self, max_age):
@@ -34,12 +35,11 @@ class YoungerThen(object):
         now = date.today()
         max_age_date = now - timedelta(days=365*self.max_age)
         if value < max_age_date:
-            raise ValidationError(self.message % self.max_age)
+            raise ValidationError(self.message % { "years": self.max_age })
 
 
 class OlderThen(object):
-    u""" Старше чем """
-    message = u"Слишком молодой. Минимум %d лет"
+    message = _("Very young. At least %(years)d years old.")
     min_age = None
 
     def __init__(self, min_age):
@@ -49,12 +49,12 @@ class OlderThen(object):
         now = date.today()
         min_age_date = now - timedelta(days=365*self.min_age)
         if value > min_age_date:
-            raise ValidationError(self.message % self.min_age)
+            raise ValidationError(self.message % { "years": self.min_age })
 
 
 # Файловые валидаторы
 class MaxFileSize(object):
-    message = u"Максимальный размер файла %s"
+    message = _("Maximum file size is %(size)s")
     max_size = None
 
     def __init__(self, max_size):
@@ -62,11 +62,12 @@ class MaxFileSize(object):
 
     def __call__(self, value):
         if value.size > self.max_size:
-            raise ValidationError(self.message %filesizeformat(self.max_size))
+            raise ValidationError(self.message % \
+                                    { "size": filesizeformat(self.max_size) } )
 
 
 class MinFileSize(object):
-    message = u"Минимальный размер файла %s"
+    message = _("Minimum file size is %(size)s")
     min_size = None
 
     def __init__(self, min_size):
@@ -74,4 +75,6 @@ class MinFileSize(object):
 
     def __call__(self, value):
         if value.size < self.min_size:
-            raise ValidationError(self.message %filesizeformat(self.min_size))
+            raise ValidationError(self.message % \
+                                     { "size": filesizeformat(self.min_size) })
+
