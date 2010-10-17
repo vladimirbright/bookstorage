@@ -57,7 +57,7 @@ class Author(models.Model):
         return super(Author, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return _("Author: %(name)s %(surname)s") %{
+        return _("Author: %(surname)s %(name)s") %{
                                                     "name": self.first_name,
                                                     "surname": self.surname
                                                   }
@@ -65,4 +65,5 @@ class Author(models.Model):
     class Meta:
         verbose_name = _('Author')
         verbose_name_plural = _('Authors')
+        ordering = ( 'letter', )
 
