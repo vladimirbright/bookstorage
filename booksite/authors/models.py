@@ -14,6 +14,8 @@ class FirstLetter(models.Model):
 
     class Meta:
         ordering = ( 'letter', )
+        verbose_name = _('First letter')
+        verbose_name_plural = _('First letters')
 
 
 class Author(models.Model):

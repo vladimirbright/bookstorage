@@ -10,7 +10,7 @@ direct = 'django.views.generic.simple.direct_to_template'
 
 urlpatterns = patterns('',
     url( r'^$', direct, { 'template': 'index.html'}, name='index'),
-    url( r'^authors/$', direct, { 'template': 'authors.html'}, name='authors'),
+    url( r'^authors/', include('authors.urls', namespace='authors')),
     url( r'^books/$', direct, { 'template': 'books.html'}, name='books'),
     url( r'^genres/$', direct, { 'template': 'genres.html'}, name='genres'),
     url( r'^reading/$', direct, { 'template': 'reading.html'}, name='reading'),

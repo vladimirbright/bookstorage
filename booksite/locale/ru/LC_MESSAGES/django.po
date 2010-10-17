@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 00:34+0400\n"
+"POT-Creation-Date: 2010-10-17 21:33+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,42 +20,60 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: authors/models.py:10
+msgid "letter"
+msgstr "буква"
+
+#: authors/models.py:13
+#, python-format
+msgid "Letter: %(letter)s"
+msgstr "Буква: %(letter)s"
+
+#: authors/models.py:17 authors/models.py:49
+msgid "First letter"
+msgstr "Первая буква"
+
+#: authors/models.py:18
+#, fuzzy
+msgid "First letters"
+msgstr "Первые буквы"
+
+#: authors/models.py:22
 msgid "Name"
 msgstr "Имя"
 
-#: authors/models.py:11
+#: authors/models.py:23
 msgid "Second name"
 msgstr "Отчество"
 
-#: authors/models.py:14
+#: authors/models.py:26
 msgid "Surname (name of organisation)"
 msgstr "Фамилия (название организации)"
 
-#: authors/models.py:16
+#: authors/models.py:28
 msgid "Nickname"
 msgstr "Ник"
 
-#: authors/models.py:17
+#: authors/models.py:29
 msgid "Birthday"
 msgstr "День рождения"
 
-#: authors/models.py:24
+#: authors/models.py:36
 msgid "Deathday"
 msgstr "День смерти"
 
-#: authors/models.py:30
+#: authors/models.py:42
 msgid "Photo"
 msgstr "Фото"
 
-#: authors/models.py:38
+#: authors/models.py:60
 #, python-format
 msgid "Author: %(name)s %(surname)s"
 msgstr "Автор: %(name)s %(surname)s"
 
-#: authors/models.py:44
+#: authors/models.py:66
 msgid "Author"
 msgstr "Автор"
 
-#: authors/models.py:45
+#: authors/models.py:67
 msgid "Authors"
 msgstr "Авторы"

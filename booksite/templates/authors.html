@@ -4,4 +4,44 @@
 
 {% block n-a %}Авторы{% endblock %}
 
-{% block p-current %}Писатели{% endblock %}
+{% block p %}
+    <h3>Алфавитный указатель</h3>
+    <a href="{% url authors:all %}">Все</a>&nbsp;,
+    {% for l in letters %}
+        <a href="{% url authors:letter l.letter %}">{{ l.letter|upper }}</a>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+    <hr/>
+    <h4>
+        Страницы: {{ authors_page.number }} из {{ authors_page.paginator.num_pages }}.
+        {% if authors_page.has_previous %}
+            <a href="?page={{ authors_page.previous_page_number }}">&larr;</a>
+        {% endif %}
+        {% if authors_page.has_next %}
+            <a href="?page={{ authors_page.next_page_number }}">&rarr;</a>
+        {% endif %}
+    </h4>
+    <hr/>
+{% endblock %}
+
+{% block c %}
+    <ol>
+        {% for a in authors %}
+            <li>{{ a }}&nbsp;
+                {% if perms.authors.edit_author %}
+                    <a target="_blank" href="{% url admin:authors_author_change a.pk %}">ред.</a>
+                {% endif %}{% if perms.authors.delete_author %}
+                    <a target="_blank" href="{% url admin:authors_author_delete a.pk %}">уд.</a>
+                {% endif %}</li>
+        {% endfor %}
+    </ol>
+    <hr/>
+    <h4>
+        Страницы: {{ authors_page.number }} из {{ authors_page.paginator.num_pages }}.
+        {% if authors_page.has_previous %}
+            <a href="?page={{ authors_page.previous_page_number }}">&larr;</a>
+        {% endif %}
+        {% if authors_page.has_next %}
+            <a href="?page={{ authors_page.next_page_number }}">&rarr;</a>
+        {% endif %}
+    </h4>
+{% endblock %}
