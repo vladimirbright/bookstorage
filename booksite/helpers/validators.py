@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-u"""
-    Дополнительные валидаторы.
-"""
+""" Additional validators """
+
 from datetime import datetime, date, timedelta
 
 from django.core.exceptions import ValidationError
@@ -10,20 +9,20 @@ from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
 
-# Временные валидаторы
+# date validators
 def in_future(value):
-    if (isinstance(value, date) and value < date.today()) or \
-       (isinstance(value, datetime) and value < datetime.now()):
+    if (type(value) is date and value < date.today()) or \
+       (type(value) is datetime and value < datetime.now()):
         raise ValidationError(_("Only in future"))
 
 
 def in_past(value):
-    if (isinstance(value, date) and value > date.today()) or \
-       (isinstance(value, datetime) and value > datetime.now()):
+    if (type(value) is date and value > date.today()) or \
+       (type(value) is datetime and value > datetime.now()):
         raise ValidationError(_("Only in past"))
 
 
-# Возрастные валидаторы
+# year old validators
 class YoungerThen(object):
     message = _("Too old. Maximum %(years)d years old.")
     max_age = None
@@ -52,7 +51,7 @@ class OlderThen(object):
             raise ValidationError(self.message % { "years": self.min_age })
 
 
-# Файловые валидаторы
+# file validators
 class MaxFileSize(object):
     message = _("Maximum file size is %(size)s")
     max_size = None
