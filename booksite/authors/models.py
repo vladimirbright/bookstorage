@@ -50,6 +50,9 @@ class Author(models.Model):
                                null=True,
                                default=None)
 
+    #def safe_photo(self):
+        #return self.photo or 
+
     def save(self, *args, **kwargs):
         letter, created = \
              FirstLetter.objects.get_or_create(letter=self.surname[:1].lower())

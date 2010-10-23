@@ -56,6 +56,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+THUMBNAIL_MEDIA_ROOT = self_dir('s/thumbs')
+THUMBNAIL_MEDIA_URL = '/s/thumbs/'
+
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (

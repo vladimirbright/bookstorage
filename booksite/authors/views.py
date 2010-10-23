@@ -3,11 +3,12 @@
 from django.conf import settings
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.http import HttpResponse, Http404
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render_to_response
+from django.template import RequestContext
 from django.views.generic.simple import direct_to_template
-# Create your views here.
 
 from authors.models import Author, FirstLetter
+
 
 AUTHORS_PER_PAGE = getattr(settings, 'AUTHORS_PER_PAGE', 50)
 
@@ -27,7 +28,8 @@ def authors_list(request, authors_qs, context=None):
             "authors_page": authors_page,
             "letters": FirstLetter.objects.all().order_by('letter')
         }
-    return direct_to_template(request, 'authors.html', c)
+    return render_to_response('authors/list.html', c,
+                              context_instance=RequestContext(request))
 
 
 def authors_list_by_letter(request, letter):
