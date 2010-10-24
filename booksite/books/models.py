@@ -54,9 +54,9 @@ def inc_or_dec_author_book_count(sender, instance, action, pk_set, **kwargs):
     _del = False
     if action == 'post_add':
         _add = True
-    elif action == 'post_remove':
+    elif action == 'pre_remove':
         _del = True
-    elif action == 'post_clear':
+    elif action == 'pre_clear':
         _del = True
     else:
         return
@@ -68,6 +68,12 @@ def inc_or_dec_author_book_count(sender, instance, action, pk_set, **kwargs):
                       .update(book_count=F('book_count') - 1)
 m2m_changed.connect(inc_or_dec_author_book_count, Book.authors.through,
                                                 dispatch_uid="books.count.m2m")
+
+
+def decr_author_book_count_on_delete(sender, instance, **kwargs):
+    instance.authors.all().update(book_count=F('book_count') - 1)
+pre_delete.connect(decr_author_book_count_on_delete, sender=Book,
+                                             dispatch_uid="books.count.d.on.d")
 
 
 class BookFile(models.Model):
