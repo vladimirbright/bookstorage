@@ -59,6 +59,8 @@ MIDDLEWARE_CLASSES = (
 THUMBNAIL_MEDIA_ROOT = self_dir('s/thumbs')
 THUMBNAIL_MEDIA_URL = '/s/thumbs/'
 
+DEFAULT_IMAGE = 'i/white.jpg'
+
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (

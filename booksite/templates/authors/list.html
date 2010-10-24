@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load thumbnail %}
+
 {% block head-title %}{{ block.super }} : Писатели{% endblock %}
 
 {% block n-a %}Авторы{% endblock %}
@@ -26,7 +28,7 @@
 {% block c %}
     <ol>
         {% for a in authors %}
-            <li>{{ a }}&nbsp;
+            <li><img src="{% thumbnail a.safe_photo 50x50 %}" >{{ a }}&nbsp;
                 {% if perms.authors.edit_author %}
                     <a target="_blank" href="{% url admin:authors_author_change a.pk %}">ред.</a>
                 {% endif %}{% if perms.authors.delete_author %}
