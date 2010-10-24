@@ -1,0 +1,9 @@
+.authors_container {
+  overflow: auto;
+  margin-bottom: 15px;
+}
+
+.author_box {
+  width: 50px;
+  float: left;
+}
