@@ -60,6 +60,7 @@ THUMBNAIL_MEDIA_ROOT = self_dir('s/thumbs')
 THUMBNAIL_MEDIA_URL = '/s/thumbs/'
 
 DEFAULT_IMAGE = 'i/white.jpg'
+DEFAULT_IMAGE_3_4 = 'i/white3_4.jpg'
 
 ROOT_URLCONF = 'urls'
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 23:52+0400\n"
+"POT-Creation-Date: 2010-10-24 21:07+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,89 +19,139 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: authors/models.py:10
+#: authors/models.py:14
 msgid "letter"
 msgstr "буква"
 
-#: authors/models.py:13
+#: authors/models.py:17
 #, python-format
 msgid "Letter: %(letter)s"
 msgstr "Буква: %(letter)s"
 
-#: authors/models.py:17 authors/models.py:49
+#: authors/models.py:21 authors/models.py:53
 msgid "First letter"
 msgstr "Первая буква"
 
-#: authors/models.py:18
+#: authors/models.py:22
 #, fuzzy
 msgid "First letters"
 msgstr "Первые буквы"
 
-#: authors/models.py:22
+#: authors/models.py:26
 msgid "Name"
 msgstr "Имя"
 
-#: authors/models.py:23
+#: authors/models.py:27
 msgid "Second name"
 msgstr "Отчество"
 
-#: authors/models.py:26
+#: authors/models.py:30
 msgid "Surname (name of organisation)"
 msgstr "Фамилия (название организации)"
 
-#: authors/models.py:28
+#: authors/models.py:32
 msgid "Nickname"
 msgstr "Ник"
 
-#: authors/models.py:29
+#: authors/models.py:33
 msgid "Birthday"
 msgstr "День рождения"
 
-#: authors/models.py:36
+#: authors/models.py:40
 msgid "Deathday"
 msgstr "День смерти"
 
-#: authors/models.py:42
+#: authors/models.py:46
 msgid "Photo"
 msgstr "Фото"
 
-#: authors/models.py:60
-#, python-format
-msgid "Author: %(name)s %(surname)s"
+#: authors/models.py:70
+#, fuzzy, python-format
+msgid "Author: %(surname)s %(name)s"
 msgstr "Автор: %(name)s %(surname)s"
 
-#: authors/models.py:66
+#: authors/models.py:76
 msgid "Author"
 msgstr "Автор"
 
-#: authors/models.py:67
+#: authors/models.py:77 books/models.py:17
 msgid "Authors"
 msgstr "Авторы"
 
-#: helpers/validators.py:17
+#: books/models.py:16
+msgid "Title"
+msgstr "Название"
+
+#: books/models.py:19
+msgid "Abstract"
+msgstr "Аннотация"
+
+#: books/models.py:20
+msgid "Cover"
+msgstr "Обложка"
+
+#: books/models.py:26 books/models.py:53
+msgid "Uploader"
+msgstr "Загрузивший"
+
+#: books/models.py:27 books/models.py:54
+msgid "Added"
+msgstr "Добавлено"
+
+#: books/models.py:38
+#, python-format
+msgid "Book: %(book)s, authors: %(authors)s"
+msgstr "Книга: %(book)s, авторы: %(authors)s"
+
+#: books/models.py:42 books/models.py:47
+msgid "Book"
+msgstr "Книга"
+
+#: books/models.py:43
+msgid "Books"
+msgstr "Книги"
+
+#: books/models.py:48
+msgid "File"
+msgstr "Файл"
+
+#: books/models.py:57
+#, python-format
+msgid "File %(id)d to book %(title)s"
+msgstr "Файл %(id)d к книге %(title)s"
+
+#: books/models.py:61
+msgid "Book file"
+msgstr "Файл к книге"
+
+#: books/models.py:62
+msgid "Book files"
+msgstr "Файлы к книгам"
+
+#: helpers/validators.py:16
 msgid "Only in future"
 msgstr "Только в будущем"
 
-#: helpers/validators.py:23
+#: helpers/validators.py:22
 msgid "Only in past"
 msgstr "Только в прошлом"
 
-#: helpers/validators.py:28
+#: helpers/validators.py:27
 #, python-format
 msgid "Too old. Maximum %(years)d years old."
 msgstr "Слишком старый. Максимум %(years)d лет."
 
-#: helpers/validators.py:42
+#: helpers/validators.py:41
 #, python-format
 msgid "Very young. At least %(years)d years old."
 msgstr "Слишком молодой. Как минимум %(years)d лет."
 
-#: helpers/validators.py:57
+#: helpers/validators.py:56
 #, python-format
 msgid "Maximum file size is %(size)s"
 msgstr "Максимальный размер файла %(size)s"
 
-#: helpers/validators.py:70
+#: helpers/validators.py:69
 #, python-format
 msgid "Minimum file size is %(size)s"
 msgstr "Минимальный размер файла %(size)s"

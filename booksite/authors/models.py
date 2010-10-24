@@ -60,6 +60,10 @@ class Author(models.Model):
             return FieldFile(self, self.photo, DEFAULT_IMAGE)
         return self.photo
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ( 'authors:details', (self.pk,))
+
     def save(self, *args, **kwargs):
         letter, created = \
              FirstLetter.objects.get_or_create(letter=self.surname[:1].lower())
