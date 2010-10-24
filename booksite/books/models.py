@@ -4,6 +4,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.fields.files import FieldFile
+from django.db.models import F
+from django.db.models.signals import post_save, pre_delete, m2m_changed
 from django.utils.translation import ugettext_lazy as _
 
 from authors.models import Author
@@ -41,6 +43,31 @@ class Book(models.Model):
     class Meta:
         verbose_name = _("Book")
         verbose_name_plural = _("Books")
+
+
+def inc_or_dec_author_book_count(sender, instance, action, pk_set, **kwargs):
+    print action
+    print pk_set
+    if not pk_set:
+        return
+    _add = False
+    _del = False
+    if action == 'post_add':
+        _add = True
+    elif action == 'post_remove':
+        _del = True
+    elif action == 'post_clear':
+        _del = True
+    else:
+        return
+    if _add is True:
+        Author.objects.filter(pk__in=pk_set)\
+                      .update(book_count=F('book_count') + 1)
+    elif _del is True:
+        Author.objects.filter(pk__in=pk_set)\
+                      .update(book_count=F('book_count') - 1)
+m2m_changed.connect(inc_or_dec_author_book_count, Book.authors.through,
+                                                dispatch_uid="books.count.m2m")
 
 
 class BookFile(models.Model):

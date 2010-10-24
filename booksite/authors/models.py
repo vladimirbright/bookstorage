@@ -53,6 +53,7 @@ class Author(models.Model):
                                verbose_name=_('First letter'),
                                null=True,
                                default=None)
+    book_count = models.PositiveIntegerField(_("Book count"), default=0)
 
     @property
     def safe_photo(self):

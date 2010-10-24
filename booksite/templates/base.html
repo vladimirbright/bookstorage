@@ -7,14 +7,15 @@
     <title>{% block head-title %}Книгохран{% endblock %}</title>
     <link rel="shortcut icon" href="{{MEDIA_URL}}i/favicon.ico" />
     {% block head-blueprint %}
-    <!-- Framework CSS -->
-    <link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/screen.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/print.css" type="text/css" media="print">
-    <!--[if lt IE 8]><link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+        <!-- Framework CSS -->
+        <link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/screen.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/print.css" type="text/css" media="print">
+        <!--[if lt IE 8]><link rel="stylesheet" href="{{MEDIA_URL}}css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
     {% endblock %}
     {% block head-css %}
-    <link rel="stylesheet" href="{{MEDIA_URL}}css/main.css?{% now "H:i:s"  %}" type="text/css">
+        <link rel="stylesheet" href="{{MEDIA_URL}}css/main.css?{% now "H:i:s"  %}" type="text/css">
     {% endblock %}
+    {% block head-extra %}{% endblock %}
   </head>
   <body>
     <div class="container">

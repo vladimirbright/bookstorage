@@ -4,6 +4,10 @@
 
 {% block head-title %}{{ block.super }} : Писатели{% endblock %}
 
+{% block head-extra %}
+    <link rel="stylesheet" href="{{MEDIA_URL}}css/authors.css?{% now "sss"  %}" type="text/css">
+{% endblock %}
+
 {% block n-a %}Авторы{% endblock %}
 
 {% block p %}
@@ -26,16 +30,27 @@
 {% endblock %}
 
 {% block c %}
-    <ol>
-        {% for a in authors %}
-            <li><img src="{% thumbnail a.safe_photo 50x50 %}" >{{ a }}&nbsp;
-                {% if perms.authors.edit_author %}
-                    <a target="_blank" href="{% url admin:authors_author_change a.pk %}">ред.</a>
-                {% endif %}{% if perms.authors.delete_author %}
-                    <a target="_blank" href="{% url admin:authors_author_delete a.pk %}">уд.</a>
-                {% endif %}</li>
-        {% endfor %}
-    </ol>
+    {% for a in authors %}
+    <div class="authors_container">
+        <div class="author_box">
+            <a href={{ a.get_absolute_url }}>
+                <img src="{% thumbnail a.safe_photo 50x50 %}" >
+            </a>
+            {% if perms.authors.edit_author %}
+                <a target="_blank" href="{% url admin:authors_author_change a.pk %}"
+                   title="Редактировать">
+                    <img src="{{ MEDIA_URL }}i/icons/user_edit.png" />
+                </a>
+            {% endif %}{% if perms.authors.delete_author %}
+                <a target="_blank" href="{% url admin:authors_author_delete a.pk %}"
+                   title="Удалить">
+                    <img src="{{ MEDIA_URL }}i/icons/user_delete.png" />
+                </a>
+            {% endif %}
+        </div>
+        <h5> {{ a }} </h5>
+    </div>
+    {% endfor %}
     <hr/>
     <h4>
         Страницы: {{ authors_page.number }} из {{ authors_page.paginator.num_pages }}.
