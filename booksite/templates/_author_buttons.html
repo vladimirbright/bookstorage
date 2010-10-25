@@ -1,0 +1,11 @@
+{% if perms.authors.edit_author %}
+    <a target="_blank" href="{% url admin:authors_author_change author.pk %}"
+       title="Редактировать писателя">
+        <img src="{{ MEDIA_URL }}i/icons/user_edit.png" />
+    </a>
+{% endif %}{% if perms.authors.delete_author %}
+    <a target="_blank" href="{% url admin:authors_author_delete author.pk %}"
+       title="Удалить писателя">
+        <img src="{{ MEDIA_URL }}i/icons/user_delete.png" />
+    </a>
+{% endif %}

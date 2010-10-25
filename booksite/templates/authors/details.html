@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block head-title %}{{ block.super }} : {{ author.first_name }}{% if author.second_name %} {{ author.second_name }}{% endif %} {{ author.surname }}{% endblock %}
+
+{% block head-extra %}
+    <link rel="stylesheet" href="{{MEDIA_URL}}css/authors.css" type="text/css">
+{% endblock %}
+
+{% block n-a %}Авторы{% endblock %}
+
+{% block p %}
+    <h3>{{ author.first_name }}{% if author.second_name %} {{ author.second_name }}{% endif %} {{ author.surname }}</h3>
+    {% include "_author_buttons.html" %}
+    <hr/>
+{% endblock %}
+
+{% block c %}
+    <a href="{{ author.safe_photo.url }}">
+        <img src="{% thumbnail author.safe_photo 150x150 %}" />
+    </a>
+    <hr/>
+    <h4>Книги</h4>
+    {% for b in author.book_set.all %}
+    <div>
+        {{ b }}<img src="{{ MEDIA_URL }}i/icons/book.png">{% with b as book %}{% include "_book_buttons.html" %}{% endwith %}
+    </div>
+    {% empty %}
+    <div>
+        <h5>Нет книг в нашей библиотеке</h5>
+    </div>
+    {% endfor %}
+    <br>
+    <a href="{% url authors:all %}">&larr; К списку</a>
+{% endblock %}

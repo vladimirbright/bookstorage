@@ -6,4 +6,6 @@
 .author_box {
   width: 50px;
   float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

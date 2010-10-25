@@ -45,5 +45,7 @@ def authors_list_all(request):
 
 def authors_details(request, pk):
     author = get_object_or_404(Author, pk=pk)
-    return HttpResponse(u"%s" % author)
+    c = { "author": author }
+    return render_to_response('authors/details.html', c,
+                              context_instance=RequestContext(request))
 

@@ -1,0 +1,11 @@
+{% if perms.books.edit_book %}
+    <a target="_blank" href="{% url admin:books_book_change book.pk %}"
+       title="Редактировать книгу">
+        <img src="{{ MEDIA_URL }}i/icons/book_edit.png" />
+    </a>
+{% endif %}{% if perms.books.delete_book %}
+    <a target="_blank" href="{% url admin:books_book_delete book.pk %}"
+       title="Удалить книгу">
+        <img src="{{ MEDIA_URL }}i/icons/book_delete.png" />
+    </a>
+{% endif %}

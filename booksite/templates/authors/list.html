@@ -5,7 +5,7 @@
 {% block head-title %}{{ block.super }} : Писатели{% endblock %}
 
 {% block head-extra %}
-    <link rel="stylesheet" href="{{MEDIA_URL}}css/authors.css?{% now "sss"  %}" type="text/css">
+    <link rel="stylesheet" href="{{MEDIA_URL}}css/authors.css" type="text/css">
 {% endblock %}
 
 {% block n-a %}Авторы{% endblock %}
@@ -32,23 +32,15 @@
 {% block c %}
     {% for a in authors %}
     <div class="authors_container">
+        <h5> {{ a.first_name }}{% if a.second_name %} {{ a.second_name }}{% endif %} {{ a.surname }} {% if a.nick %}({{ a.nick }}){% endif %}
+            {% with a as author %}{% include '_author_buttons.html' %}{% endwith %}</h5>
         <div class="author_box">
             <a href={{ a.get_absolute_url }}>
                 <img src="{% thumbnail a.safe_photo 50x50 %}" >
             </a>
-            {% if perms.authors.edit_author %}
-                <a target="_blank" href="{% url admin:authors_author_change a.pk %}"
-                   title="Редактировать">
-                    <img src="{{ MEDIA_URL }}i/icons/user_edit.png" />
-                </a>
-            {% endif %}{% if perms.authors.delete_author %}
-                <a target="_blank" href="{% url admin:authors_author_delete a.pk %}"
-                   title="Удалить">
-                    <img src="{{ MEDIA_URL }}i/icons/user_delete.png" />
-                </a>
-            {% endif %}
         </div>
-        <h5> {{ a }} </h5>
+        <a href="{{ a.get_absolute_url }}" title="Количество книг на сайте">
+            <img src="{{ MEDIA_URL }}i/icons/book.png" /> {{ a.book_count }}</a>
     </div>
     {% endfor %}
     <hr/>
