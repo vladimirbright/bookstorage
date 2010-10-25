@@ -48,11 +48,10 @@ class Book(models.Model):
 def inc_or_dec_author_book_count(sender, instance, action, pk_set, **kwargs):
     print action
     print pk_set
-    if not pk_set:
-        return
+    print instance
     _add = False
     _del = False
-    if action == 'post_add':
+    if action == 'pre_add':
         _add = True
     elif action == 'pre_remove':
         _del = True
@@ -64,8 +63,10 @@ def inc_or_dec_author_book_count(sender, instance, action, pk_set, **kwargs):
         Author.objects.filter(pk__in=pk_set)\
                       .update(book_count=F('book_count') + 1)
     elif _del is True:
-        Author.objects.filter(pk__in=pk_set)\
-                      .update(book_count=F('book_count') - 1)
+        for i in instance.authors.all():
+            if i.book_count > 0:
+                i.book_count -= 1
+                i.save()
 m2m_changed.connect(inc_or_dec_author_book_count, Book.authors.through,
                                                 dispatch_uid="books.count.m2m")
 
