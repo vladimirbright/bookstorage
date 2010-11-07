@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load thumbnail %}
+{% load thumbnail pagination_tags %}
 
 {% block head-title %}{{ block.super }} : Писатели{% endblock %}
 
@@ -17,19 +17,12 @@
         <a href="{% url authors:letter l.letter %}">{{ l.letter|upper }}</a>{% if not forloop.last %}, {% endif %}
     {% endfor %}
     <hr/>
-    <h4>
-        Страницы: {{ authors_page.number }} из {{ authors_page.paginator.num_pages }}.
-        {% if authors_page.has_previous %}
-            <a href="?page={{ authors_page.previous_page_number }}">&larr;</a>
-        {% endif %}
-        {% if authors_page.has_next %}
-            <a href="?page={{ authors_page.next_page_number }}">&rarr;</a>
-        {% endif %}
-    </h4>
-    <hr/>
 {% endblock %}
 
 {% block c %}
+    {% autopaginate authors 50 %}
+    {% paginate %}
+    <hr/>
     {% for a in authors %}
     <div class="authors_container">
         <h5> {{ a.first_name }}{% if a.second_name %} {{ a.second_name }}{% endif %} {{ a.surname }} {% if a.nick %}({{ a.nick }}){% endif %}
@@ -44,13 +37,5 @@
     </div>
     {% endfor %}
     <hr/>
-    <h4>
-        Страницы: {{ authors_page.number }} из {{ authors_page.paginator.num_pages }}.
-        {% if authors_page.has_previous %}
-            <a href="?page={{ authors_page.previous_page_number }}">&larr;</a>
-        {% endif %}
-        {% if authors_page.has_next %}
-            <a href="?page={{ authors_page.next_page_number }}">&rarr;</a>
-        {% endif %}
-    </h4>
+    {% paginate %}
 {% endblock %}

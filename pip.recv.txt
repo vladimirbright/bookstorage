@@ -6,3 +6,4 @@ psycopg2>=2.2.2
 fabric
 ipython
 git+http://github.com/SmileyChris/easy-thumbnails.git
+django-pagination
